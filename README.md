@@ -8,6 +8,6 @@ Windows Başlat menüsüne sağ tıklayın ve PowerShell veya Terminal'i seçin.
 
 Aşağıdaki kodu kopyalayıp yapıştırın ve Enter tuşuna basın:
 
-`irm https://github.cohttps://raw.githubusercontent.com/ilker-binzet/JDownloader-Adblock/main/script.ps1 | iex`
+`irm https://raw.githubusercontent.com/ilker-binzet/JDownloader-Adblock/main/script.ps1 | iex`
 
 Sonra, ekrandaki talimatları takip edin.
