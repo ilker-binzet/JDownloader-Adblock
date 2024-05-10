@@ -9,27 +9,24 @@ $kullaniciSecimi = Read-Host "Devam et?(e/h)"
 switch($kullaniciSecimi)
 {
 	e {
-		$jsonYolu = $env:LOCALAPPDATA + '/JDownloader 2.0/cfg/org.jdownloader.settings.GraphicalUserInterfaceSettings.json'
+		$jsonYolu = "$env:LOCALAPPDATA\JDownloader 2.0\cfg\org.jdownloader.settings.GraphicalUserInterfaceSettings.json"
 		try {
 			$jsonVerisi = Get-Content -Path $jsonYolu | ConvertFrom-Json
 		}
 		catch {
-			Write-Error "org.jdownloader.settings.GraphicalUserInterfaceSettings.json Dosya Bulunamadı"
+			Write-Error "org.jdownloader.settings.GraphicalUserInterfaceSettings.json dosyası bulunamadı"
 			Start-Sleep 3
 			exit
 		}
-		$jsonVerisi.premiumalertetacolumnenabled = $false
+		$jsonVerisi.statusbaraddpremiumbuttonvisible = $false
 		$jsonVerisi.premiumalertspeedcolumnenabled = $false
-		$jsonVerisi.premiumalertetacolumnenabled = $false
-		$jsonVerisi.specialdealoboomdialogvisibleonstartup = $false
-		$jsonVerisi.specialdealsenabled = $false
-		$jsonVerisi.donatebuttonstate = "CUSTOM_HIDDEN"
-		$jsonVerisi.bannerenabled = $false
+
 		$jsonString = $jsonVerisi | ConvertTo-Json
 		$jsonString | Set-Content -Path $jsonYolu
-		Write-Output "Reklam Engelleme Tamamlandı."
+		Write-Output "Ayarlar başarıyla güncellendi."
 		Start-Sleep 3
 	}
 	h {exit}
-	default {Write-Output ("Gecersiz arguman. Cevap e veya h olmalı.")}
+	default {Write-Output ("Geçersiz argüman. Cevap e veya h olmalı.")}
 }
+
